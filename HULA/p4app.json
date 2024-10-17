@@ -1,0 +1,396 @@
+{
+  "p4_src": "p4src/hula.p4",
+  "cli": true,
+  "pcap_dump": true,
+  "enable_log": true,
+  "switch_node": {
+    "module_name": "p4utils.mininetlib.node",
+    "object_name": "P4RuntimeSwitch"
+  },
+  "compiler_module": {
+    "options": {
+      "p4rt": true
+    }
+  },
+  "topology": {
+    "assignment_strategy": "l3",
+    "links": [
+      [
+        "h1",
+        "edge1",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h2",
+        "edge1",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h3",
+        "edge2",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h4",
+        "edge2",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h5",
+        "edge3",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h6",
+        "edge3",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h7",
+        "edge4",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h8",
+        "edge4",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h9",
+        "edge5",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h10",
+        "edge5",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h11",
+        "edge6",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h12",
+        "edge6",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h13",
+        "edge7",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h14",
+        "edge7",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h15",
+        "edge8",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "h16",
+        "edge8",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge1",
+        "aggr1",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge1",
+        "aggr2",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge2",
+        "aggr1",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge2",
+        "aggr2",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge3",
+        "aggr3",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge3",
+        "aggr4",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge4",
+        "aggr3",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge4",
+        "aggr4",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge5",
+        "aggr5",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge5",
+        "aggr6",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge6",
+        "aggr5",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge6",
+        "aggr6",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge7",
+        "aggr7",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge7",
+        "aggr8",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge8",
+        "aggr7",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "edge8",
+        "aggr8",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr1",
+        "core1",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr1",
+        "core2",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr2",
+        "core3",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr2",
+        "core4",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr3",
+        "core1",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr3",
+        "core2",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr4",
+        "core3",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr4",
+        "core4",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr5",
+        "core1",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr5",
+        "core2",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr6",
+        "core3",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr6",
+        "core4",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr7",
+        "core1",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr7",
+        "core2",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr8",
+        "core3",
+        {
+          "bw": 2
+        }
+      ],
+      [
+        "aggr8",
+        "core4",
+        {
+          "bw": 2
+        }
+      ]
+    ],
+    "hosts": {
+      "h1": {},
+      "h2": {},
+      "h3": {},
+      "h4": {},
+      "h5": {},
+      "h6": {},
+      "h7": {},
+      "h8": {},
+      "h9": {},
+      "h10": {},
+      "h11": {},
+      "h12": {},
+      "h13": {},
+      "h14": {},
+      "h15": {},
+      "h16": {}
+    },
+    "switches": {
+      "core1": {},
+      "core2": {},
+      "core3": {},
+      "core4": {},
+      "aggr1": {},
+      "aggr2": {},
+      "aggr3": {},
+      "aggr4": {},
+      "aggr5": {},
+      "aggr6": {},
+      "aggr7": {},
+      "aggr8": {},
+      "edge1": {},
+      "edge2": {},
+      "edge3": {},
+      "edge4": {},
+      "edge5": {},
+      "edge6": {},
+      "edge7": {},
+      "edge8": {}
+    }
+  }
+}
