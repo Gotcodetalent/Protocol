@@ -1,2 +1,2 @@
 # Protocol
-實作簡易版的EIGRP、STP協定
+概念性實作EIGRP、STP協定
