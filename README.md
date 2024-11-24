@@ -115,16 +115,16 @@ ID:5, next hop:3, cost:40
 # **Spanning Tree Protocol 模擬程式**
 
 ## **概述**
-此程式模擬生成樹協議 (STP) 的運作過程，透過以下幾個步驟生成最小生成樹 (Minimum Spanning Tree)：
-1. 決定根橋 (Root Bridge)。
-2. 建立初始鏈接並選擇最低成本的邊作為樹的一部分。
-3. 檢測並移除循環，確保拓撲為無環圖。
-4. 計算各節點到根橋的最短路徑。
+模擬生成樹協議 (STP) 的運作過程，透過以下幾個步驟生成最小生成樹 (Minimum Spanning Tree)：
+1. 決定Root Bridge。
+2. 建立初始化link並選擇最低成本的邊作為樹的一部分。
+3. 檢測並移除cycle，確保拓撲為non-cyclic。
+4. 計算各節點到root bridge的最短路徑。
 
-此模擬程式的實作重點包括：
-- **Kruskal 演算法**：用於計算最小生成樹。
-- **Dijkstra 演算法**：計算節點到根橋的最短路徑。
-- **聯集-尋找結構 (Union-Find)**：避免循環的有效工具。
+程式的實作重點包括：
+- **Kruskal 演算法**：用於計算MSTP。
+- **Dijkstra 演算法**：計算節點到root bridge的最短路徑。
+- **聯集-尋找結構 (Union-Find)**：避免cycle產生。
 
 ---
 
@@ -143,7 +143,7 @@ ID:5, next hop:3, cost:40
 
 ### **2. root bridge的選擇**
 - 根據優先權選擇根橋，優先權較低者成為根橋。
-- 若優先權相同，則選擇 ID 較小的節點作為根橋。
+- 若優先權相同，則選擇 ID 較小的節點作為root bridge。
 
 ---
 
