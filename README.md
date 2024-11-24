@@ -1,8 +1,6 @@
 # Protocol
 概念性實作EIGRP、STP協定
 
-以下是針對您的 **EIGRP 協定模擬程式** 撰寫的分析與註解，適合作為 GitHub 上的 `README.md` 文件：
-
 ---
 
 # EIGRP Protocol Simulation
