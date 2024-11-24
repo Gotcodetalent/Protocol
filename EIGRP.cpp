@@ -11,7 +11,7 @@ class EIGRP_Switch
 public:
     int id;
     int n;                         // 有多少條link
-    int routing[65536][2] = {{0}}; // 第一格代表到index switch的路徑的next-hop(第一步), 第二格代表該路徑的cost
+    int routing[65536][2] = {{0}}; // 第一格代表到index switch的路徑的next-hop(第一步), 第二格代表該路徑的cost; 動態分配則使用unordered_map
 
     EIGRP_Switch() = default;
     EIGRP_Switch(int id_, int n_)
