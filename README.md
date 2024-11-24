@@ -162,23 +162,23 @@ ID:5, next hop:3, cost:40
 
 ### **5. 生成樹中的埠分類**
 - 根據生成樹中的邊狀態，將埠分為：
-  - **根埠 (Root Port)**: 直接連接根橋的埠。
-  - **指定埠 (Designated Port)**: 負責傳輸數據的埠。
-  - **阻塞埠 (Blocked Port)**: 不參與傳輸的埠。
+  - **R port (Root Port)**: 直接連接根橋的埠。
+  - **D port (Designated Port)**: 負責傳輸數據的埠。
+  - **B port (Blocked Port)**: 不參與傳輸的埠。
 
 ---
 
 ## **輸出**
 - 程式將結果輸出到 `output.txt`，包含：
-  1. 根橋 ID 和優先權。
+  1. root ID && priority。
   2. 最短路徑成本總和。
-  3. 各種埠的數量。
+  3. 各種port的數量。
 
 ---
 
-### **關鍵程式碼片段**
+### **使用到的演算法**
 
-#### Kruskal 演算法核心邏輯：
+#### Kruskal ：
 ```cpp
 while (temp != node && tree_edge > 0) {
     for (int i = 0; i < link.size(); ++i) {
@@ -198,7 +198,7 @@ while (temp != node && tree_edge > 0) {
 }
 ```
 
-#### Dijkstra 演算法核心邏輯：
+#### Dijkstra ：
 ```cpp
 for (int i = 0; i < n - 1; ++i) {
     int minDistance = numeric_limits<int>::max();
