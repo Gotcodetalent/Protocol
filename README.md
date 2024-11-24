@@ -111,9 +111,6 @@ ID:5, next hop:3, cost:40
    ```
    - 輸入檔案名稱（如 `input`），程式會自動處理並生成 `output.txt`。
 
-以下是關於模擬 **生成樹協議 (Spanning Tree Protocol, STP)** 程式的註解，適合用於 GitHub README 檔案中，以繁體中文撰寫。
-
----
 
 # **Spanning Tree Protocol 模擬程式**
 
