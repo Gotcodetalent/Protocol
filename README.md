@@ -155,16 +155,16 @@ ID:5, next hop:3, cost:40
 ---
 
 ### **4. 計算最短路徑**
-- 使用 `Dijkstra` 演算法計算節點到根橋的最短路徑。
-- 儲存結果並輸出到檔案。
+- 使用 `Dijkstra` 演算法計算節點到root bridge的最短路徑。
+- 儲存結果並輸出。
 
 ---
 
 ### **5. 生成樹中的埠分類**
-- 根據生成樹中的邊狀態，將埠分為：
-  - **R port (Root Port)**: 直接連接根橋的埠。
-  - **D port (Designated Port)**: 負責傳輸數據的埠。
-  - **B port (Blocked Port)**: 不參與傳輸的埠。
+- 根據生成樹中的邊狀態，將port分為：
+  - **R port (Root Port)**: 直接連接root bridge的port。
+  - **D port (Designated Port)**: 負責傳輸數據的port。
+  - **B port (Blocked Port)**: 不參與傳輸的port。
 
 ---
 
