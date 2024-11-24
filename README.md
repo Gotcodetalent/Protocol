@@ -1,9 +1,8 @@
 # Protocol
-概念性實作EIGRP、STP協定
+概念性模擬EIGRP、STP協定
 
----
 
-# EIGRP Protocol Simulation
+# **EIGRP Protocol Simulation**
 
 本專案為模擬 EIGRP（Enhanced Interior Gateway Routing Protocol）的 C++ 程式。該協定使用距離向量算法來維護交換器間的路由表，並實現快速的路徑更新與拓撲變更處理。
 
@@ -111,3 +110,119 @@ ID:5, next hop:3, cost:40
    ./eigrp_simulation
    ```
    - 輸入檔案名稱（如 `input`），程式會自動處理並生成 `output.txt`。
+
+以下是關於模擬 **生成樹協議 (Spanning Tree Protocol, STP)** 程式的註解，適合用於 GitHub README 檔案中，以繁體中文撰寫。
+
+---
+
+# **Spanning Tree Protocol 模擬程式**
+
+## **概述**
+此程式模擬生成樹協議 (STP) 的運作過程，透過以下幾個步驟生成最小生成樹 (Minimum Spanning Tree)：
+1. 決定根橋 (Root Bridge)。
+2. 建立初始鏈接並選擇最低成本的邊作為樹的一部分。
+3. 檢測並移除循環，確保拓撲為無環圖。
+4. 計算各節點到根橋的最短路徑。
+
+此模擬程式的實作重點包括：
+- **Kruskal 演算法**：用於計算最小生成樹。
+- **Dijkstra 演算法**：計算節點到根橋的最短路徑。
+- **聯集-尋找結構 (Union-Find)**：避免循環的有效工具。
+
+---
+
+## **主要功能與邏輯說明**
+
+### **1. 初始化與輸入**
+- **輸入檔案格式**：
+  1. 第一行包含交換器 ID 和優先權 (Priority)。
+  2. 第二行為其他交換器的數量與資訊。
+  3. 接下來包含所有交換器間的鏈接資訊（起點、終點及頻寬）。
+- **初始化資料結構**：
+  - 使用 `vector` 儲存鏈接資訊（節點 x, 節點 y, 成本）。
+  - 使用 `set` 儲存所有出現的節點，用以確認生成樹是否包含所有節點。
+
+---
+
+### **2. root bridge的選擇**
+- 根據優先權選擇根橋，優先權較低者成為根橋。
+- 若優先權相同，則選擇 ID 較小的節點作為根橋。
+
+---
+
+### **3. Kruskal 演算法**
+- 根據邊的成本排序，優先加入最小成本的邊。
+- 利用 `union-find` 檢測循環，避免形成環。
+- 將邊的資訊更新到生成樹結構 `spanning_tree` 中。
+
+---
+
+### **4. 計算最短路徑**
+- 使用 `Dijkstra` 演算法計算節點到根橋的最短路徑。
+- 儲存結果並輸出到檔案。
+
+---
+
+### **5. 生成樹中的埠分類**
+- 根據生成樹中的邊狀態，將埠分為：
+  - **根埠 (Root Port)**: 直接連接根橋的埠。
+  - **指定埠 (Designated Port)**: 負責傳輸數據的埠。
+  - **阻塞埠 (Blocked Port)**: 不參與傳輸的埠。
+
+---
+
+## **輸出**
+- 程式將結果輸出到 `output.txt`，包含：
+  1. 根橋 ID 和優先權。
+  2. 最短路徑成本總和。
+  3. 各種埠的數量。
+
+---
+
+### **關鍵程式碼片段**
+
+#### Kruskal 演算法核心邏輯：
+```cpp
+while (temp != node && tree_edge > 0) {
+    for (int i = 0; i < link.size(); ++i) {
+        x = link[i][0];
+        y = link[i][1];
+        link_cost = link[i][2];
+
+        if (union_find(x) != union_find(y)) { // 避免形成循環
+            union_[y] = union_[x];
+            temp.insert(x);
+            temp.insert(y);
+            STP_Switch.port[x][y] = 1;
+            --tree_edge;
+            break;
+        }
+    }
+}
+```
+
+#### Dijkstra 演算法核心邏輯：
+```cpp
+for (int i = 0; i < n - 1; ++i) {
+    int minDistance = numeric_limits<int>::max();
+    int minIndex = -1;
+
+    for (int j = 0; j < n; ++j) {
+        if (!visited[j] && distances[j] < minDistance) {
+            minDistance = distances[j];
+            minIndex = j;
+        }
+    }
+
+    visited[minIndex] = true;
+
+    for (int j = 0; j < n; ++j) {
+        if (!visited[j] && graph[minIndex][j] != 0) {
+            int newDistance = distances[minIndex] + graph[minIndex][j];
+            if (newDistance < distances[j]) {
+                distances[j] = newDistance;
+            }
+        }
+    }
+}
+
